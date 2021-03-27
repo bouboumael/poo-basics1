@@ -9,15 +9,17 @@ class Car
     private int $numberSeats;
     private string $energy;
     private int $energyLevel;
-    private bool $start = false;
+    private bool $start;
 
     public function __construct(
-        int $numberWheels,
-        int $currentSpeed,
-        string $color,
-        int $numberSeats,
-        string $energy,
-        int $energyLevel)
+        int $numberWheels = 4,
+        int $currentSpeed = 0,
+        string $color = 'red',
+        int $numberSeats = 4,
+        string $energy = 'gasoil',
+        int $energyLevel = 100,
+        bool $start = false
+        )
     {
         $this->numberWheels = $numberWheels;
         $this->currentSpeed = $currentSpeed;
@@ -25,6 +27,7 @@ class Car
         $this->numberSeats = $numberSeats;
         $this->energy = $energy;
         $this->energyLevel = $energyLevel;
+        $this->start = $start;
     }
     
     public function getNumberWheels()
@@ -103,21 +106,27 @@ class Car
     {
         if ($this->start === false) {
             $this->start = true;
-            return 'This car is off! D\'OH!';
+            return 'The car is on! Vrooom Vrooom!';
         } else {
             $this->start = false;
-            return 'This car is on! Vrooom Vrooom!';
+            return 'The car is off! D\'OH!';
         }
     }
 
-    public function foward ()
+    public function foward (): string
     {
-
+        $this->currentSpeed = 15;
+        return "Go !";
     }
 
-    public function brake ()
-    {
-
+    public function brake (): string{
+        $sentence = "";
+        while ($this->currentSpeed > 0) {
+            $this->currentSpeed--;
+            $sentence .= "Brake !!!";
+        }
+        $sentence .= " I'm stopped";
+        return $sentence;
     }
 
 }
