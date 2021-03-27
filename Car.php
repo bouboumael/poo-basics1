@@ -9,6 +9,7 @@ class Car
     private int $numberSeats;
     private string $energy;
     private int $energyLevel;
+    private bool $start = false;
 
     public function __construct(
         int $numberWheels,
@@ -98,9 +99,15 @@ class Car
         return $this;
     }
 
-    public function start ()
+    public function start (): string
     {
-        
+        if ($this->start === false) {
+            $this->start = true;
+            return 'This car is off! D\'OH!';
+        } else {
+            $this->start = false;
+            return 'This car is on! Vrooom Vrooom!';
+        }
     }
 
     public function foward ()

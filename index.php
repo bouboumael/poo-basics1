@@ -1,7 +1,14 @@
 <?php
 
+require_once 'Bicycle.php';
 require_once 'Car.php';
 
-$car = new Car(4, 15, 'red', 4, 'electic', 50);
+$bike = new Bicycle();
+$bike->color = 'blue';
+$bike->currentSpeed = 0;
 
-var_dump($car);
+echo $bike->foward();
+echo '<br> Vitesse du vélo : ' . $bike->currentSpeed . ' km/h' . '<br>';
+echo $bike->brake();
+echo '<br> Vitesse du vélo : ' . $bike->currentSpeed . ' km/h' . '<br>';
+echo $bike->brake();
